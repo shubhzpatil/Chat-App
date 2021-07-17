@@ -7,5 +7,5 @@ app.secret.key = 'replace'
 def index():
     return 'I am Shubham'
     
-if __name__ == "__main__"
+if __name__ == "__main__":
     app.run(debug=True)
