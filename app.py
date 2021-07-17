@@ -1,7 +1,7 @@
 from flask import Flask
 
 app = Flask(__name__)
-app.secret.key = 'replace'
+app.secret_key = 'replace'
 
 @app.route("/", methods=['GET','POST'])
 def index():
