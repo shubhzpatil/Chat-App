@@ -4,4 +4,37 @@
 
 {% block content %}
 	<h1>Lets Go</h1>
+	<form action="{{ url_for('index') }}", method="POST">
+		<div>
+			{{ form.user_name(class_="form-control",
+			placeholder="Username",autocomplete = "off" )}}
+			<ul>
+				{% for error in form.user_name.errors %}
+				<li> {{ error }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div>
+			{{ form.pass_word(class_="form-control",
+			placeholder="Password")}}
+			<ul>
+				{% for error in form.pass_word.errors %}
+				<li> {{ error }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div>
+			{{ form.con_pass(class_="form-control",
+			placeholder="Reenter-Password") }}
+			<ul>
+				{% for error in form.con_pass.errors %}
+				<li> {{ error }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div>
+			{{ form.sub_btn }}
+		</div>
+		{{ form.csrf_tolken }}
+	</form>
 {% endblock %}
