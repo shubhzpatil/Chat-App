@@ -1,40 +1,23 @@
+{% from 'helper.html' import display %}
+
 {% extends "prelogin.html" %}
 
 {% block title %}Registration{% endblock %}
 
 {% block content %}
+
 	<h1>Lets Go</h1>
 	<form action="{{ url_for('index') }}", method="POST">
+	
+		
+		{{ display(form.user_name,"Username", autocomplete = "off" )}}
+		{{ display(form.pass_word,"Password" )}}
+		{{ display(form.con_pass,"Reenter-Password")}}
+
 		<div>
-			{{ form.user_name(class_="form-control",
-			placeholder="Username",autocomplete = "off" )}}
-			<ul>
-				{% for error in form.user_name.errors %}
-				<li> {{ error }}</li>
-				{% endfor %}
-			</ul>
+			 <input type="submit" value="Create">
 		</div>
-		<div>
-			{{ form.pass_word(class_="form-control",
-			placeholder="Password")}}
-			<ul>
-				{% for error in form.pass_word.errors %}
-				<li> {{ error }}</li>
-				{% endfor %}
-			</ul>
-		</div>
-		<div>
-			{{ form.con_pass(class_="form-control",
-			placeholder="Reenter-Password") }}
-			<ul>
-				{% for error in form.con_pass.errors %}
-				<li> {{ error }}</li>
-				{% endfor %}
-			</ul>
-		</div>
-		<div>
-			{{ form.sub_btn }}
-		</div>
-		{{ form.csrf_tolken }}
+		
+		{{ form.csrf_token }}
 	</form>
 {% endblock %}

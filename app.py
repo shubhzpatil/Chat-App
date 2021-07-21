@@ -11,7 +11,7 @@ def index():
     register = RegistrationForm()
     
     if register.validate_on_submit():
-        return "Success..."
+        return "Sucess"
         
     return render_template("index.html", form=register)
     
