@@ -1,0 +1,23 @@
+{% from 'helper.html' import display %}
+{% extends 'prelogin.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+	
+    <h2>Login Now!</h2>
+    <p>Enter valid Username and password for login</p>
+    <form action="{{ url_for('login') }}", method="POST">
+	
+		
+		{{ display(form.user_name,"Username", autocomplete = "off" )}}
+		{{ display(form.pass_word,"Password" )}}
+
+		<div>
+			 <input type="submit" value="Login">
+		</div>
+		
+		{{ form.csrf_token }}
+	</form>
+
+    {% endblock %}

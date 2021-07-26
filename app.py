@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 
 from wt_forms import *
 from models import *
@@ -15,21 +15,30 @@ db = SQLAlchemy(app)
 def index():
 
     register = RegistrationForm()
-    
+
+    #this will update the database if user register successfully
     if register.validate_on_submit():
         user1 = register.user_name.data
         pass1 = register.pass_word.data
 
-        user_object = User.query.filter_by(usernm=user1).first()
-        if user_object:
-            return "Someone already taken this username!"
-
         user = User(usernm=user1,passw=pass1)
         db.session.add(user)
         db.session.commit()
-        return "Inserted Into Database!"
+        return redirect(url_for('login'))
         
     return render_template("index.html", form=register)
-    
+
+@app.route("/login", methods=['GET','POST'])
+def login():
+
+    login_form = LoginForm()
+
+    #this allow user to login
+    if login_form.validate_on_submit():
+        return "Login successfully..."
+
+    return render_template("login.html", form=login_form)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
