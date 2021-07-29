@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 
+
 from wt_forms import *
 from models import *
 
@@ -21,7 +22,10 @@ def index():
         user1 = register.user_name.data
         pass1 = register.pass_word.data
 
-        user = User(usernm=user1,passw=pass1)
+        hashed_pass = pbkdf2_sha256.hash(pass1)
+
+        #adding user to database
+        user = User(usernm=user1,passw=hashed_pass)
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('login'))

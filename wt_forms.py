@@ -2,19 +2,17 @@ from models import User
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, EqualTo, ValidationError
-
+from passlib.hash import pbkdf2_sha256
 from models import User
 
 def check_data(form,passdata):
     username_login = form.user_name.data
     password_login = passdata.data
 
-
-
     user_object = User.query.filter_by(usernm=username_login).first()
     if user_object is None:
         raise ValidationError("Username or password is incorrect")
-    elif password_login != user_object.passw:
+    elif not pbkdf2_sha256.verify(password_login,user_object.passw):
         raise ValidationError("Username or password is incorrect")
 
 class RegistrationForm(FlaskForm):
