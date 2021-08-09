@@ -7,17 +7,19 @@
 	
     <h2>Login Now!</h2>
     <p>Enter valid Username and password for login</p>
+	<link rel="shortcut icon" href="#">
 	
-    <form action="{{ url_for('login') }}", method="POST">
+    <form action="{{ url_for('login') }}" method="POST">
 	
 		
 		{{ display(form.user_name,"Username", autocomplete = "off" )}}
 		{{ display(form.pass_word,"Password" )}}
+	
 
 		<div>
 			 <input type="submit" value="Login">
 		</div>
-		
+	
 		{{ form.csrf_token }}
 	</form>
 
