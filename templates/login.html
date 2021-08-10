@@ -5,22 +5,25 @@
 
 {% block content %}
 	
-    <h2>Login Now!</h2>
-    <p>Enter valid Username and password for login</p>
+    <h2>Lets Chat !</h2>
+    <p>Enter valid Username or password for login</p>
 	<link rel="shortcut icon" href="#">
 	
     <form action="{{ url_for('login') }}" method="POST">
 	
 		
-		{{ display(form.user_name,"Username", autocomplete = "off" )}}
+		{{ display(form.user_name,"Username", autocomplete = "off", autofocus=true )}}
 		{{ display(form.pass_word,"Password" )}}
 	
 
-		<div>
-			 <input type="submit" value="Login">
+		<div class="form-group">
+			 <input type="submit" value="Login" class="btn btn-warning">
 		</div>
 	
 		{{ form.csrf_token }}
 	</form>
+
+	
+	<p>Have not registered? <a href={{ url_for('index') }}>Register here</a>.</p>
 
     {% endblock %}

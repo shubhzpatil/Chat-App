@@ -6,18 +6,22 @@
 
 {% block content %}
 
-	<h1>Lets Go</h1>
+	<div class="to_center">
+	<h2>Sign Up Here.</h2>
+	<p></p> 
 	<form action="{{ url_for('index') }}", method="POST">
 	
 		
-		{{ display(form.user_name,"Username", autocomplete = "off" )}}
+		{{ display(form.user_name,"Username", autocomplete = "off", autofocus=True )}}
 		{{ display(form.pass_word,"Password" )}}
 		{{ display(form.con_pass,"Reenter-Password")}}
 
-		<div>
-			 <input type="submit" value="Register">
+		<div class="form-group">
+			 <input type="submit" value="Register" class="btn btn-warning">
 		</div>
 		
 		{{ form.csrf_token }}
 	</form>
+	<p>Already registered? <a href={{ url_for('login') }}>Login here</a>.</p>
+	</div>
 {% endblock %}

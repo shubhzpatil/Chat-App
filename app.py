@@ -43,7 +43,7 @@ def index():
         db.session.add(user)
         db.session.commit()
 
-        flash('You are Registered Successfully..!Please Login.','Success')
+        flash('You are Registered Successfully..!Please Login.')
         return redirect(url_for('login'))
         
     return render_template("index.html", form=register)
@@ -64,7 +64,7 @@ def login():
 @app.route("/chat",methods=['GET','POST'])
 def chat():
     if not current_user.is_authenticated:
-        flash('Please Login.','Danger')
+        flash('Please Login.')
         return redirect(url_for('login'))
     return render_template('chat.html', username=current_user.usernm, rooms=ROOMS)
 
@@ -73,7 +73,7 @@ def chat():
 def logout():
 
     logout_user()
-    flash('You have Logged out Successfully','Success')
+    flash('You have Logged out Successfully')
     return redirect(url_for('login'))
 
 
