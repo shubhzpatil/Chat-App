@@ -16,7 +16,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = """postgresql://yhpysqkoarzser:725098228
 db = SQLAlchemy(app)
 
 socketio = SocketIO(app)
-ROOMS = ["Team 1","Team 2","Team 3"]
+ROOMS = ["Default","Team 1","Team 2","Team 3"]
 
 login = LoginManager(app)
 login.init_app(app)
@@ -86,12 +86,12 @@ def message(data):
 @socketio.on('join')
 def join(data):
     join_room(data['room'])
-    send({'msg': data['username'] + " has joined the " + data['room'] + "chat."}, room=data['room'])
+    send({'msg': data['username'] + " has joined the " + data['room'] + " chat."}, room=data['room'])
 
 @socketio.on('leave')
 def leave(data):
     leave_room(data['room'])
-    send({'msg': data['username'] + " has left the " + data['room'] + "chat."}, room=data['room'])
+    send({'msg': data['username'] + " has left the " + data['room'] + " chat."}, room=data['room'])
 
 
 if __name__ == "__main__":

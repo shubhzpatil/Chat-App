@@ -4,18 +4,18 @@
 }
 
 #main-section {
-    overflow: hidden; /* Makee this div contain its floated children */
+    overflow: hidden; 
     width: 100%;
 }
 
 #sidebar {
     margin-top: 2em;
-    float: left; /* Make this div as wide as its contents */
+    float: left; 
     min-height: 96vh;
     padding-left: 1em;
     padding-top: 3em;
     padding-right:1em;
-    border-right: 0.5px solid #898c91;
+    border-right: 3px solid rgb(89, 216, 89);
 }
 
 #sidebar p {
@@ -24,7 +24,7 @@
 }
 
 #sidebar p:hover {
-    background-color: #ffc107;
+    background-color: orange;
 }
 
 #sidebar h4 {padding-left: 0.5em;}
@@ -36,7 +36,7 @@
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s;
-    color: #335177;
+    color: orange;
 }
 
 @media (max-width: 567px) {
@@ -60,14 +60,14 @@
 }
 
 #rightside-pannel {
-    overflow: hidden; /* Make this div take up the rest of the horizontal space, and no more */
+    overflow: hidden; 
 }
 
 #display-message-section {
     margin-top: 5em;
     min-height: 82vh;
     max-height: 82vh;
-    overflow-y: auto; /*Make  this section scrolable */
+    overflow-y: auto; 
 }
 
 #input-area {
@@ -77,8 +77,8 @@
 }
 
 input[type=text]:focus{
-    border-color: #ffc107;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 10px #ffc107;
+    border-color: green;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 10px green;
 }
 
 @keyframes fadeIn {
@@ -143,10 +143,15 @@ input[type=text]:focus{
 }
 
 #msg-input {
-    border-color: #ffc107;
+    border-color: green;
     border-width: 5px;
 }
 
 #get-username {
     display: none !important;
+}
+
+.btn_color{
+    color:black;
+    background-color:green;
 }

@@ -1,30 +1,70 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <meta charset="utf-8">
   <head>
-    <meta charset="utf-8">
-    <title>Chat</title>
-    <link rel="shortcut icon" href="#">
-  </head>
-  <body>
-  <nav>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  </nav>
+  <title>Lets Chat With Teams</title>
+  <script> 
+    $("#user_message").keypress(function(event) {
+        if (event.keyCode === 13) {
+            $("#send_mesasge").click();
+        }
+    });
+</script>
+
+ 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/chat_style.css') }}">
+</head>
+    <body>
+      
+      {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              <p class=formError>{{ messages[0] }}</p>
+          {% endif %}
+      {% endwith %}
+
+      <div class="wrapper">
+
+          <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: rgb(32, 175, 19)">
+
+              <div class="container-fluid">
+                  <div id="show-sidebar-button" class="cursor-pointer">
+                      <i class="fas fa-plus-circle "></i>
+                      <span>Rooms</span>
+                  </div>
+
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav ml-auto">
+                          <li class="nav-item">
+                              <a id="logout-btn" class="nav-link" href="{{ url_for('logout') }}"><span style="color: #335177">Logout</span></a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </nav>
   <div id="main-section">
-    <nav id ="sidebar">
-
-      <H4>List Of Teams</H4>
+    <nav id="sidebar">
+      <h4>List Of Teams</h4>
       {% for room in rooms %}
-      <p class="select-room">{{ room|title }}</p>
+          <p id="{{ room|title }}" class="select-room cursor-pointer">{{ room|title }}</p>
       {% endfor %}
-
-    </nav>
+  </nav>
     <div id="rightside-pannel">
       <div id="display-message-section">
 
       </div>
-      <div id="input-area">
-        <input type="text" id="user_message" placeholder="Type here..." autocomplete="off">
-        <button type="button" id="send_mesasge">Send</button>
+      <div id="input-area" class="input-group mb-3">
+        <input type="text" id="user_message" class="form-control" aria-label="Type a message" aria-describedby="basic-addon2" placeholder="Type here..." autocomplete="off">
+        <div class="input-group-append">
+        <button type="button" class="btn_color" id="send_mesasge">Send<i class="fas fa-paper-plane"></i></button>
+      </div>
       </div>
     </div>
   </div>
@@ -32,10 +72,15 @@
   <script type="text/javascript">
     const username = `{{ username }}`;
   </script>
-    <script src="{{ url_for('static', filename='scripts/chat_page.js') }}">  </script>
 
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
   <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
   <script src="{{ url_for('static', filename='scripts/socket_io.js') }}">  </script>
+
+
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+</body>
   </body>
 </html>

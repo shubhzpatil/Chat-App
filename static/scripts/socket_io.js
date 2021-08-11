@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         if(data.username){
             span_username.innerHTML = data.username;
             span_timestamp.innerHTML = data.time_stamp;
-            p.innerHTML = span_username.outerHTML + br.outerHTML + data.msg + br.outerHTML + span_timestamp.outerHTML;
+            p.innerHTML = span_username.outerHTML + ' : '+ data.msg ;
             document.querySelector('#display-message-section').append(p);
         }else{
             printSysMsg(data.msg);

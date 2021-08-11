@@ -5,7 +5,8 @@
 
 {% block content %}
 	
-    <h2>Lets Chat !</h2>
+	<div class="to_center">
+    <h3>Lets Chat !</h3>
     <p>Enter valid Username or password for login</p>
 	<link rel="shortcut icon" href="#">
 	
@@ -24,6 +25,7 @@
 	</form>
 
 	
-	<p>Have not registered? <a href={{ url_for('index') }}>Register here</a>.</p>
+	<center><p>Have not registered? <a href={{ url_for('index') }}>Register here</a>.</p></center>
+	</div>
 
     {% endblock %}
